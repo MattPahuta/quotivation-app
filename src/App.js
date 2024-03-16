@@ -11,7 +11,7 @@ function App() {
   const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState("All");
-  const [favoriteQuotes, setFavoriteQuotes] = useState([]);
+  const [favoriteQuotes, setFavoriteQuotes] = useState(JSON.parse(window.localStorage.getItem("favoriteQuotes")) || []);
   const [messageText, setMessageText] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   
@@ -34,7 +34,11 @@ function App() {
 
   useEffect(() => {
     fetchQuotes();
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("favoriteQuotes", JSON.stringify(favoriteQuotes));
+  }, [favoriteQuotes]);
 
   console.log(quotes);
   // handle selecting a quote category option from CategoryForm select input
