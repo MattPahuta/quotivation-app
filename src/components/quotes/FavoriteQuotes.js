@@ -9,13 +9,16 @@ function FavoriteQuotes({favoriteQuotes, maxFaves, removeFromFavorites}) {
         {favoriteQuotes.length > 0 && <ul>
           {favoriteQuotes.map(quote => <FavoriteQuoteCard key={quote.id} quote={quote} removeFromFavorites={removeFromFavorites} />)}
         </ul>}
-        <div className="favorite-quotes-description">
-          <p>
-            You can add up to three favorites by selecting from the options below.
-            <br />
-            Once you choose, they will appear here.
-          </p>
-        </div>
+        {/* Note: adding this usage of maxFaves and conditional rendering skipped in tutorial??? */}
+        {favoriteQuotes.length < maxFaves && (
+          <div className="favorite-quotes-description">
+            <p>
+              You can add up to three favorites by selecting from the options below.
+              <br />
+              Once you choose, they will appear here.
+            </p>
+          </div>
+        )}
       </div>
     </section>
   )

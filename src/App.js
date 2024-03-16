@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Message from "./components/Message";
 import Quotes from "./components/quotes/Quotes";
 import FavoriteQuotes from "./components/quotes/FavoriteQuotes";
 import { Loader } from "react-feather";
@@ -11,6 +12,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState("All");
   const [favoriteQuotes, setFavoriteQuotes] = useState([]);
+  const [messageText, setMessageText] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
   
   const maxFaves = 3;
   const quotesUrl =
@@ -46,12 +49,15 @@ function App() {
     const selectedQuote = quotes.find(({id}) => id === quoteId); // find quote that was clicked on
     const alreadyFavorite = favoriteQuotes.find(({id}) => id === selectedQuote.id); // check if quote already in faves
     if (alreadyFavorite) { // if already favorited
-      console.log("Already in your favorites. Choose another.")
+      setMessageText("Already in your favorites. Choose another.");
+      setShowMessage(true);
     } else if (favoriteQuotes.length < maxFaves) { // else if there's room for a new fave
       setFavoriteQuotes([...favoriteQuotes, selectedQuote]);
-      console.log("Added to favorites!")
+      setMessageText("Added to favorites!")
+      setShowMessage(true)
     } else { // else max fave number reached
-      console.log('Max number of fave quotes reached. Delete a fave to add another.')
+      setMessageText("Max number of fave quotes reached. Delete a fave to add another.")
+      setShowMessage(true)
     }
   }
 
@@ -61,8 +67,14 @@ function App() {
     setFavoriteQuotes(updatedFavorites); // set fave quotes state
   }
 
+  // update message state
+  function removeMessage() {
+    setShowMessage(false);
+  }
+
   return (
     <div className='App'>
+      {showMessage && <Message messageText={messageText} removeMessage={removeMessage} />}
       <Header />
       <main>
         <FavoriteQuotes favoriteQuotes={favoriteQuotes} maxFaves={maxFaves} removeFromFavorites={removeFromFavorites} />
