@@ -61,7 +61,7 @@ function App() {
       setMessageText("Added to favorites!")
       setShowMessage(true)
     } else { // else max fave number reached
-      setMessageText("Max number of fave quotes reached. Delete a fave to add another.")
+      setMessageText("Max number of favorites reached. Delete a favorite to add another.")
       setShowMessage(true)
     }
   }
