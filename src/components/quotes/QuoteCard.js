@@ -2,9 +2,8 @@ import React from "react";
 import { Heart } from "react-feather";
 
 function QuoteCard({quote, addToFavorites, favoriteQuotes}) {
-  // ToDo: update 'alreadyFavorite' to currentFavorite
-  const alreadyFavorite = favoriteQuotes.find(({id}) => id === quote.id);
-  const faveStyle = alreadyFavorite ? "#333" : "";
+  const currentFavorite = favoriteQuotes.find(({id}) => id === quote.id);
+  const faveStyle = currentFavorite ? "#333" : "";
   return (
     <article className="quote-card">
       <div>

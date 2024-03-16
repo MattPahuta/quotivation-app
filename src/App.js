@@ -15,6 +15,7 @@ function App() {
   const [messageText, setMessageText] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   
+  let messageDuration = 1500;
   const maxFaves = 3;
   const quotesUrl =
     "https://gist.githubusercontent.com/skillcrush-curriculum/6365d193df80174943f6664c7c6dbadf/raw/1f1e06df2f4fc3c2ef4c30a3a4010149f270c0e0/quotes.js";
@@ -78,7 +79,7 @@ function App() {
 
   return (
     <div className='App'>
-      {showMessage && <Message messageText={messageText} removeMessage={removeMessage} />}
+      {showMessage && <Message messageText={messageText} removeMessage={removeMessage} messageDuration={messageDuration} />}
       <Header />
       <main>
         <FavoriteQuotes favoriteQuotes={favoriteQuotes} maxFaves={maxFaves} removeFromFavorites={removeFromFavorites} />
