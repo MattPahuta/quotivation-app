@@ -1,9 +1,83 @@
-* {
+/*
+Author: Matt Pahuta
+https://www.mattpahuta.com
+Date: March 2024
+*/
+/* **************** */
+/* Custom Variables */
+/* **************** */
+:root {
+  /* Fonts */
+  --ff-sans: "Public Sans", sans-serif;
+  --ff-cursive: "Pacifico", cursive;
+  --ff-accent: "Redacted Script", cursive;
+  /* Font Sizes */
+  --fs-400: 1.125rem;
+  --fs-450: 1.25rem;
+  --fs-500: 1.5rem;
+  --fs-600: 1.75rem;
+  --fs-650: 2rem;
+  --fs-700: 3.125rem;
+  --fs-800: 4rem;
+  /* Colors */
+  /* neutral */
+  --clr-white: #FFFFFF;
+  --clr-gray: #9c9c9c;
+  --clr-near-black: #1D1F21;
+  /* primary */
+  --clr-oxford-blue: #0B0F2B;
+  --clr-space-cadet: #333554;
+  --clr-amber: #FFC107;
+  --clr-pumkin: #FF8C42;
+  --clr-moonstone: #00BCD4;
+  --clr-midnight-green: #005e74;
+  /* Border radius */
+  --br-soft: 10px;
+  --br-medium: 14px;
+  --br-full: 26px;
+}
+/* RESET */
+/* Josh Comeau custom css reset */
+/* https://www.joshwcomeau.com/css/custom-css-reset/ */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
 body {
-  font-family: "Public Sans", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+body {
+  font-size: var(--fs-400);
+  font-family: var(--ff-sans);
+  background: var(--clr-oxford-blue);
+  color: var(--clr-white);
 }
 
 img,
@@ -13,26 +87,23 @@ svg {
 }
 
 svg {
-  color: #ad7000;
+  color: var(--clr-amber);
   width: 70px;
   height: 70px;
   margin: 1rem auto;
 }
 
+h1, h2 {
+  line-height: 1.1;
+}
+
 h1 {
-  font-size: 4rem;
-  letter-spacing: 4px;
-  text-align: center;
-  font-family: "Pacifico", cursive;
+  font-family: var(--ff-cursive);
 }
 
 h2 {
   text-align: center;
-  font-size: 1.5rem;
-}
-
-h3 {
-  font-size: 1.3125rem;
+  color: var(--clr-amber);
 }
 
 .App {
@@ -55,29 +126,35 @@ main {
 
 header {
   width: 100%;
-  background: #ffe7a8;
+  padding: 2.5rem 0;
+}
+
+.header-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
 }
 
 header h1 {
   text-align: left;
-  margin-top: 4rem;
   padding-left: 1rem;
   font-weight: 400;
-  font-size: 1.75rem;
-  letter-spacing: 0.6px;
+  font-size: var(--fs-600);
+  letter-spacing: 1.8px;
 }
 
 header h1 span {
   display: inline-block;
   margin-right: 0.5rem;
-  font-family: "Redacted Script", cursive;
+  font-family: var(--ff-accent);
   font-weight: 400;
   font-size: 6.25rem;
   line-height: 33px;
 }
 
 header h2 {
-  font-size: 3.4375rem;
+  font-size: 3.375rem;
+  line-height: 1.1;
   font-weight: 700;
 }
 
@@ -89,17 +166,17 @@ footer {
 .message {
   position: fixed;
   top: 20vh;
-  left: 15%;
+  padding: 2.5em 4em;
+  margin-inline: auto;
   display: flex;
   justify-content: space-between;
-  width: 70%;
+  max-width: 70%;
   text-align: center;
-  font-size: 1.25rem;
-  background-color: #fff2cf;
-  color: #ad7000;
-  border: 2px solid #ad7000;
-  padding: 3rem 1.5rem;
-  border-radius: 14px;
+  font-size: 1.325rem;
+  background-color: var(--clr-pumkin);
+  color: var(--clr-near-black);
+  border: 2px solid var(--clr-pumpkin);
+  border-radius: var(--br-medium);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
@@ -115,7 +192,7 @@ footer {
   top: 5px;
   opacity: 0;
   padding: 0.5rem 0.75rem;
-  border-radius: 10px;
+  border-radius: var(--br-soft);
   cursor: pointer;
   font-weight: 700;
   transition: 0.3s;
@@ -125,31 +202,40 @@ footer {
   transform: scale(1.2);
 }
 
-.favorite-quotes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-  background: #ffe7a8;
+.favorite-quotes-heading {
+  margin-top: 2rem;
+  font-size: var(--fs-600);
+  font-weight: 400;
+  font-family: var(--ff-cursive);
 }
 
-.favorite-quotes .quotes h3 {
-  margin-bottom: 3rem;
-  font-size: 1.5rem;
+.favorite-quotes {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.favorite-quotes__results {
+  display: flex;
+  flex-direction: column;
 }
 
 .favorite-quotes .quote-card {
   margin: 4.375rem 0;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  border: 2px solid #ad7000;
-  border-radius: 26px;
+  gap: 2rem;
+  border: 2px solid var(--clr-amber);
+  border-radius: var(--br-full);
   background-color: transparent;
-  font-size: 2rem;
-  color: #ad7000;
+  font-size: var(--fs-650);
+  color: var(--clr-amber);
 }
 
 .favorite-quotes .quote-card::before {
@@ -165,7 +251,7 @@ footer {
   font-size: 3.75rem;
   line-height: 20px;
   font-weight: 700;
-  background-color: #ffe7a8;
+  background-color: var(--clr-oxford-blue);
 }
 
 .favorite-quotes .quote-card h3 {
@@ -177,21 +263,15 @@ footer {
 
 .favorite-quotes .quote-card p {
   text-align: center;
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-family: var(--ff-cursive);
+  font-size: var(--fs-450);
 }
 
-.favorite-quotes .favorite-quotes-description {
-  width: 80%;
-  padding-bottom: 2rem;
+.favorite-quotes-description > p {
+  font-size: 1.375rem;
+  padding: 2rem 0;
   margin-bottom: 2rem;
   text-align: center;
-  color: #ad7000;
-}
-
-.favorite-quotes .favorite-quotes-description p {
-  margin: 0.4rem;
-  font-size: 1.125rem;
 }
 
 .category-header {
@@ -219,11 +299,10 @@ footer {
   width: 245px;
   height: 45px;
   box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.17);
-  border-radius: 26px;
+  border-radius: var(--br-full);
   outline: 0;
   border: 0;
-  font-family: inherit;
-  font-size: 1.25rem;
+  font-size: var(--fs-450);
 }
 
 .category-filter {
@@ -234,15 +313,15 @@ footer {
 
 .category-filter label {
   margin-left: 0.5rem;
-  font-size: 1.25rem;
+  font-size: var(--fs-450);
   font-weight: 800;
 }
 
 .category-filter svg {
   width: 15px;
   height: 15px;
-  fill: black;
-  color: black;
+  fill: var(--clr-amber);
+  color: var(--clr-amber);
 }
 
 .category-filter fieldset {
@@ -253,8 +332,6 @@ footer {
 .category-filter select {
   margin-left: 2rem;
   padding: 7px 10px;
-  font-size: inherit;
-  font-family: inherit;
   background-color: #ffffff;
 }
 
@@ -266,16 +343,6 @@ footer {
   gap: 2.5rem;
 }
 
-.quotes h3 {
-  font-size: 1.75rem;
-  line-height: 39px;
-}
-
-.quotes p {
-  width: 100%;
-  font-size: 1.3125rem;
-}
-
 .quote-card {
   display: flex;
   flex-direction: column;
@@ -284,10 +351,14 @@ footer {
   width: 100%;
   max-width: 100%;
   padding: 2rem;
-  border: 1px solid #ccc;
-  border-radius: 26px;
-  background-color: #88bbc1;
-  font-size: 1.75rem;
+  border: 1px solid var(--clr-midnight-green);
+  border-radius: var(--br-full);
+  background-color: var(--clr-midnight-green);
+}
+
+.quote-card:hover {
+  scale: 1.05;
+  transition: 220ms all ease-in-out;
 }
 
 .quote-card .close-quote {
@@ -299,9 +370,9 @@ footer {
 }
 
 .quote-card .close-quote {
-  color: #ad7000;
+  color: var(--clr-amber);
   transition: 0.1s;
-  font-size: 1.4rem;
+  font-size: var(--fs-500);
   font-weight: 700;
 }
 
@@ -311,17 +382,17 @@ footer {
 
 .quote-card div > h3 {
   margin: 3rem 0;
+  font-size: var(--fs-500);
   font-weight: 400;
 }
 
 .quote-card .categories {
-  font-size: 1rem;
   font-weight: 800;
 }
 
 .quote-card .category {
   margin-right: 12px;
-  color: #000;
+  color: var(--clr-amber);
   text-transform: uppercase;
 }
 
@@ -332,14 +403,15 @@ footer {
 .quote-card .author {
   margin: 0;
   text-align: left;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-family: var(--ff-cursive);
+  font-size: var(--fs-500);
 }
 
 .quote-card .add-favorite {
   width: 100%;
   margin: 0;
   padding: 0;
+  font-size: 1.375rem;
   margin-left: auto;
   text-align: right;
   cursor: pointer;
@@ -352,11 +424,12 @@ footer {
   max-width: 60px;
   margin: 0;
   padding: 0;
-  color: #333;
+  color: var(--clr-near-black);
 }
 
 .quote-card .add-favorite:hover svg {
   color: #000;
+  color: var(--clr-amber);
 }
 
 @keyframes slide-down {
@@ -382,13 +455,12 @@ footer {
   }
   .favorite-quotes .quote-card h3 {
     width: 70%;
-    line-height: 44px;
-    font-size: 2rem;
+    line-height: 1.6;
+    font-size: var(--fs-600);
   }
   .favorite-quotes .quote-card p {
     text-align: center;
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: var(--fs-500);
   }
 }
 

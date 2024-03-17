@@ -6,12 +6,12 @@ function FavoriteQuotes({favoriteQuotes, maxFaves, removeFromFavorites}) {
 
   return (
     <section className="favorite-quotes">
-      <div className="wrapper quotes">
-        {availableFavorites < maxFaves && 
-          <h3>
-            {favoriteQuotes.length === 1 ? "My favorite quote" : `My top ${favoriteQuotes.length} favorite Quotes`}
-          </h3>
-        }
+      {availableFavorites < maxFaves && 
+        <h3 className="favorite-quotes-heading">
+          {favoriteQuotes.length === 1 ? "My Favorite Quote:" : `My Top ${favoriteQuotes.length} Favorite Quotes:`}
+        </h3>
+      }
+      <div className="wrapper favorite-quotes__results">
         {favoriteQuotes.length > 0 && <ul>
           {favoriteQuotes.map((quote, index) => <FavoriteQuoteCard key={quote.id} quote={quote} removeFromFavorites={removeFromFavorites} listPosition={index + 1} />)}
         </ul>}
