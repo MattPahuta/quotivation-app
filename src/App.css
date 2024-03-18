@@ -8,9 +8,9 @@ Date: March 2024
 /* **************** */
 :root {
   /* Fonts */
-  --ff-sans: "Public Sans", sans-serif;
-  --ff-cursive: "Pacifico", cursive;
-  --ff-accent: "Redacted Script", cursive;
+  --ff-sans: 'Public Sans', sans-serif;
+  --ff-cursive: 'Pacifico', cursive;
+  --ff-accent: 'Redacted Script', cursive;
   /* Font Sizes */
   --fs-400: 1.125rem;
   --fs-450: 1.25rem;
@@ -21,15 +21,15 @@ Date: March 2024
   --fs-800: 4rem;
   /* Colors */
   /* neutral */
-  --clr-white: #FFFFFF;
+  --clr-white: #ffffff;
   --clr-gray: #9c9c9c;
-  --clr-near-black: #1D1F21;
+  --clr-near-black: #1d1f21;
   /* primary */
-  --clr-oxford-blue: #0B0F2B;
+  --clr-oxford-blue: #0b0f2b;
   --clr-space-cadet: #333554;
-  --clr-amber: #FFC107;
-  --clr-pumkin: #FF8C42;
-  --clr-moonstone: #00BCD4;
+  --clr-amber: #ffc107;
+  --clr-pumkin: #ff8c42;
+  --clr-moonstone: #00bcd4;
   --clr-midnight-green: #005e74;
   /* Border radius */
   --br-soft: 10px;
@@ -39,7 +39,9 @@ Date: March 2024
 /* RESET */
 /* Josh Comeau custom css reset */
 /* https://www.joshwcomeau.com/css/custom-css-reset/ */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -47,7 +49,8 @@ Date: March 2024
   margin: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -56,20 +59,34 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
@@ -86,14 +103,15 @@ svg {
   max-width: 100%;
 }
 
-svg {
+/* svg {
   color: var(--clr-amber);
   width: 70px;
   height: 70px;
   margin: 1rem auto;
-}
+} */
 
-h1, h2 {
+h1,
+h2 {
   line-height: 1.1;
 }
 
@@ -126,7 +144,7 @@ main {
 
 header {
   width: 100%;
-  padding: 2.5rem 0;
+  padding: 2.5rem 0 4rem;
 }
 
 .header-inner {
@@ -153,12 +171,18 @@ header h1 span {
 }
 
 header h2 {
-  font-size: 3.375rem;
+  font-size: var(--fs-700);
   line-height: 1.1;
   font-weight: 700;
 }
 
-footer {
+@media (min-width: 50rem) {
+  header h2 {
+    font-size: var(--fs-800);
+  }
+}
+
+.footer {
   text-align: center;
   padding: 2rem 0;
 }
@@ -221,6 +245,11 @@ footer {
 .favorite-quotes__results {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.favorite-quotes__results ul {
+  padding: 0;
 }
 
 .favorite-quotes .quote-card {
@@ -239,7 +268,7 @@ footer {
 }
 
 .favorite-quotes .quote-card::before {
-  content: "#" attr(data-list-position);
+  content: '#' attr(data-list-position);
   padding: 0 1rem;
   position: absolute;
   top: -12px;
@@ -247,7 +276,7 @@ footer {
   width: 85px;
   height: 20px;
   text-align: center;
-  font-family: "Mukta Mahee", sans-serif;
+  font-family: 'Mukta Mahee', sans-serif;
   font-size: 3.75rem;
   line-height: 20px;
   font-weight: 700;
@@ -267,10 +296,16 @@ footer {
   font-size: var(--fs-450);
 }
 
+.favorite-quotes-description {
+  width: 70%;
+  padding-inline: 1.25rem;
+  border: 2px solid var(--clr-midnight-green);
+  border-radius: var(--br-medium);
+}
+
 .favorite-quotes-description > p {
-  font-size: 1.375rem;
+  font-size: var(--fs-450);
   padding: 2rem 0;
-  margin-bottom: 2rem;
   text-align: center;
 }
 
@@ -285,13 +320,13 @@ footer {
 .category-header h2 {
   width: 100%;
   margin: 90px 0;
-  font-weight: 700;
-  font-size: 2.5rem;
+  font-weight: 400;
+  font-size: var(--fs-650);
 }
 
 .quotes .category-header p {
   width: auto;
-  margin-top: 12px;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
@@ -354,40 +389,42 @@ footer {
   border: 1px solid var(--clr-midnight-green);
   border-radius: var(--br-full);
   background-color: var(--clr-midnight-green);
+  background-image: url('./images/quotes.svg');
+  background-repeat: no-repeat;
+  background-position: right 32px top 0;
+  transition: 220ms all ease-in-out;
 }
 
 .quote-card:hover {
   scale: 1.05;
-  transition: 220ms all ease-in-out;
 }
 
-.quote-card .close-quote {
+.close-quote-btn {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 1rem;
-  cursor: pointer;
-}
-
-.quote-card .close-quote {
+  top: 15px;
+  right: 20px;
+  padding: 0.5em;
+  width: 32px;
+  height: 32px;
   color: var(--clr-amber);
-  transition: 0.1s;
+  transition: 150ms all ease-in-out;
   font-size: var(--fs-500);
   font-weight: 700;
+}
+
+.close-quote-btn:hover,
+.close-quote-btn:focus {
+  transform: scale(1.2);
 }
 
 .quote-card .close-quote:hover {
   transform: scale(1.2);
 }
 
-.quote-card div > h3 {
+.quote-text {
   margin: 3rem 0;
   font-size: var(--fs-500);
   font-weight: 400;
-}
-
-.quote-card .categories {
-  font-weight: 800;
 }
 
 .quote-card .category {
@@ -396,8 +433,10 @@ footer {
   text-transform: uppercase;
 }
 
-.quote-card footer {
-  padding: 0;
+.quote-card__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
 }
 
 .quote-card .author {
@@ -407,29 +446,46 @@ footer {
   font-size: var(--fs-500);
 }
 
-.quote-card .add-favorite {
-  width: 100%;
-  margin: 0;
+.button {
+  border: none;
+  background-color: transparent;
   padding: 0;
-  font-size: 1.375rem;
-  margin-left: auto;
-  text-align: right;
   cursor: pointer;
-  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 220ms all ease-in-out;
 }
 
-.quote-card .add-favorite svg {
-  display: inline-block;
-  width: 2ch;
-  max-width: 60px;
-  margin: 0;
-  padding: 0;
-  color: var(--clr-near-black);
+@media screen and (-ms-high-contrast: active) {
+  .button {
+    border: 2px solid currentcolor;
+  }
 }
 
-.quote-card .add-favorite:hover svg {
-  color: #000;
+.add-favorite-btn {
+  padding: 0.25em;
+  width: 42px;
+  height: 42px;
+  align-self: end;
+  color: var(--clr-oxford-blue);
+}
+
+.add-favorite-btn svg {
+  width: 32px;
+  height: 32px;
+}
+
+.add-favorite-btn:hover,
+.add-favorite-btn:focus {
   color: var(--clr-amber);
+}
+
+.add-favorite-btn:focus {
+  outline-style: solid;
+  outline-color: transparent;
+  border: 3px solid var(--clr-amber);
+  border-radius: var(--br-soft);
 }
 
 @keyframes slide-down {
@@ -443,10 +499,7 @@ footer {
   }
 }
 
-@media (min-width: 800px) {
-  .all-quotes .quotes {
-    justify-content: space-between;
-  }
+@media (min-width: 50rem) {
   .all-quotes .quote-card {
     width: calc(50% - 2.5rem);
   }
@@ -464,7 +517,7 @@ footer {
   }
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 87rem) {
   .all-quotes .quotes {
     justify-content: flex-start;
   }

@@ -10,14 +10,13 @@ function QuoteCard({quote, addToFavorites, favoriteQuotes}) {
         <p className="categories">
           {quote.categories.map(category => <span className="category" key={category}>{category}</span>)}
         </p>
-        <h3>{quote.text}</h3>
+        <h3 className="quote-text">{quote.text}</h3>
       </div>
-      <footer>
+      <footer className="quote-card__footer">
         <p className="author">{quote.author}</p>
-        {/* ToDo: make this p tage a button */}
-        <p className="add-favorite" onClick={() => addToFavorites(quote.id)}>
+        <button className="button add-favorite-btn" onClick={() => addToFavorites(quote.id)}>
           <Heart style={{fill: faveStyle, color: faveStyle}} />
-        </p>
+        </button>
       </footer>
     </article>
   )
