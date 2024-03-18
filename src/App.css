@@ -103,15 +103,7 @@ svg {
   max-width: 100%;
 }
 
-/* svg {
-  color: var(--clr-amber);
-  width: 70px;
-  height: 70px;
-  margin: 1rem auto;
-} */
-
-h1,
-h2 {
+h1, h2 {
   line-height: 1.1;
 }
 

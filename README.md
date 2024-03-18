@@ -32,7 +32,7 @@ A responsive web app built with React that allows users to view and sort through
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Add live site URL here](https://clever-pika-840c77.netlify.app/)
 
 ## My process
 
