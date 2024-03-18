@@ -32,23 +32,18 @@ function App() {
     }
     setLoading(false);
   }
-
   useEffect(() => {
     fetchQuotes();
   }, []);
-
   useEffect(() => {
     window.localStorage.setItem("favoriteQuotes", JSON.stringify(favoriteQuotes));
   }, [favoriteQuotes]);
-
-  console.log(quotes);
   // handle selecting a quote category option from CategoryForm select input
   function handleCategoryChange(event) {
     setCategory(event.target.value);
   }
   // filter quotes according to value currently in state
   const filteredQuotes = category === "All" ? quotes : quotes.filter(quote => quote.categories.includes(category));
-
   // add quote to favorites
   function addToFavorites(quoteId) {
     const selectedQuote = quotes.find(({id}) => id === quoteId); // find quote that was clicked on
@@ -65,13 +60,11 @@ function App() {
       setShowMessage(true)
     }
   }
-
   // remove a quote from favorites
   function removeFromFavorites(quoteId) {
     const updatedFavorites = favoriteQuotes.filter(({id}) => id !== quoteId); // filter out clicked quote
     setFavoriteQuotes(updatedFavorites); // set fave quotes state
   }
-
   // update message state
   function removeMessage() {
     setShowMessage(false);
